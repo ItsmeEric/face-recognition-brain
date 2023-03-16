@@ -5,6 +5,7 @@ import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import "./App.css";
 import ParticlesBg from "particles-bg";
 
+// This was the old way to add particles
 // const particlesOptions = {
 //   particles: {
 //     number: {
