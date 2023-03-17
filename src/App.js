@@ -28,6 +28,11 @@ class App extends Component {
     };
   }
 
+  // Create an event listener to activate when the input changes
+  onInputChange = (event) => {
+    console.log(event);
+  };
+
   render() {
     return (
       <div className="App">
@@ -35,7 +40,8 @@ class App extends Component {
         <Navigation />
         <Logo />
         <Rank />
-        <ImageLinkForm />
+        {/* Give ImageLinkForm the input change event as props */}
+        <ImageLinkForm onInputChange={this.onInputChange} />
         {/*<FaceRecognition />*/}
       </div>
     );
