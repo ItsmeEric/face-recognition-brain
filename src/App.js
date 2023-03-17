@@ -20,6 +20,14 @@ import ParticlesBg from "particles-bg";
 // };
 
 class App extends Component {
+  // Create a state to recognize the user input
+  constructor() {
+    super();
+    this.state = {
+      input: "",
+    };
+  }
+
   render() {
     return (
       <div className="App">
