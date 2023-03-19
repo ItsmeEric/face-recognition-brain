@@ -38,7 +38,7 @@ class App extends Component {
 
   // Create an event listener to activate when the input changes
   onInputChange = (event) => {
-    console.log(event.target.value);
+    this.setState({ input: event.target.value });
   };
 
   onButtonSubmit = () => {
