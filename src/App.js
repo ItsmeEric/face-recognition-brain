@@ -37,6 +37,9 @@ class App extends Component {
     };
   }
 
+  //Function to calculate the position of the face in an image
+  calculateFaceLocation = (data) => {};
+
   // Create an event listener to activate when the input changes
   onInputChange = (event) => {
     this.setState({ input: event.target.value });
