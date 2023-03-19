@@ -19,6 +19,12 @@ import ParticlesBg from "particles-bg";
 //   },
 // };
 
+const Clarifai = require("clarifai");
+
+const app = new Clarifai.App({
+  apiKey: "065c7652ac0a42f4930321614d877ae6",
+});
+
 class App extends Component {
   // Create a state to recognize the user input
   constructor() {
@@ -41,7 +47,7 @@ class App extends Component {
       {
         id: "face-detection", //If you want general concepts about image: 'general-image-recognition'
         name: "face-detection", //If you want general concepts about image: 'general-image-recognition'
-        version: "6dc7e46bc9124c5c8824be4822abe105", //If you want general concepts about image: 'aa7f35c01e0642fda5cf400f543e7c40'
+        version: "065c7652ac0a42f4930321614d877ae6", //If you want general concepts about image: 'aa7f35c01e0642fda5cf400f543e7c40'
         type: "visual-detector",
       },
       this.state.input
