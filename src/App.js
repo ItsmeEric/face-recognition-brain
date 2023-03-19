@@ -42,6 +42,7 @@ class App extends Component {
   };
 
   onButtonSubmit = () => {
+    this.setState({ imageUrl: this.state.input });
     console.log("click");
 
     // We'll be using the new way of the Clarifai API face detection model
