@@ -38,7 +38,10 @@ class App extends Component {
   }
 
   //Function to calculate the position of the face in an image
-  calculateFaceLocation = (data) => {};
+  calculateFaceLocation = (data) => {
+    const clarifaiFace =
+      data.outputs[0].data.regions[0].region_info.bounding_box;
+  };
 
   // Create an event listener to activate when the input changes
   onInputChange = (event) => {
