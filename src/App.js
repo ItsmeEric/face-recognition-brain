@@ -44,7 +44,13 @@ class App extends Component {
     const image = document.getElementById("inputImage");
     const width = Number(image.width);
     const height = Number(image.height);
-    console.log(width, height);
+    // Return an object. The box which has the face measures
+    return {
+      leftCol: clarifaiFace.left_col * width,
+      topRow: clarifaiFace.top_row * height,
+      rightCol: width - clarifaiFace.right_col * width,
+      bottomRow: height - clarifaiFace.bottom_row * height,
+    };
   };
 
   // Create an event listener to activate when the input changes
