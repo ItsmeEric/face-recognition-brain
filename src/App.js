@@ -53,6 +53,11 @@ class App extends Component {
     };
   };
 
+  //Method to display face boundaries box
+  displayFaceBox = (box) => {
+    this.setState({ box: box });
+  };
+
   // Create an event listener to activate when the input changes
   onInputChange = (event) => {
     this.setState({ input: event.target.value });
