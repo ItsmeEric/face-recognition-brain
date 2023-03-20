@@ -12,7 +12,15 @@ const FaceRecognition = ({ imageUrl, box }) => {
           width="500px"
           height="auto"
         />
-        <div className="bounding-box"></div>
+        <div
+          className="bounding-box"
+          style={{
+            top: box.leftCol,
+            right: box.topRow,
+            bottom: box.rightCol,
+            left: box.bottomRow,
+          }}
+        ></div>
       </div>
     </div>
   );
