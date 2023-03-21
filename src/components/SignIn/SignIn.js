@@ -2,7 +2,7 @@ import React from "react";
 
 const SignIn = () => {
   return (
-    <div>
+    <article class="br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center">
       <main class="pa4 black-80">
         <form class="measure center">
           <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
@@ -50,7 +50,7 @@ const SignIn = () => {
           </div>
         </form>
       </main>
-    </div>
+    </article>
   );
 };
 
