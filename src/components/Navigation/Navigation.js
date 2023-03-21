@@ -5,7 +5,7 @@ const Navigation = ({ onRouteChange }) => {
     <nav style={{ display: "flex", justifyContent: "flex-end" }}>
       {/*Using tachyons to style our Sign Out paragraph*/}
       <p
-        onClick={onRouteChange}
+        onClick={() => onRouteChange("signin")}
         className="f3 link dim black underline pa3 pointer"
       >
         Sign Out
