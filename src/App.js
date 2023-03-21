@@ -8,6 +8,7 @@ import SignIn from "./components/SignIn/SignIn";
 import Register from "./components/Register/Register";
 import "./App.css";
 import ParticlesBg from "particles-bg";
+import { FACE_DETECT_MODEL } from "clarifai";
 
 // This was the old way to add particles
 // const particlesOptions = {
@@ -103,7 +104,13 @@ class App extends Component {
       .catch((err) => console.log(err));
   };
 
+  // Check the state we're currently in , in our page
   onRouteChange = (route) => {
+    if (route === "signout") {
+      this.setState({ isSignedIn: false });
+    } else if (route === "home") {
+      this.setState({ isSignedIn: true });
+    }
     this.setState({ route: route });
   };
 
