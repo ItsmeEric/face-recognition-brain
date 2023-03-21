@@ -114,6 +114,7 @@ class App extends Component {
   };
 
   render() {
+    // Destructuring the components props
     const { isSignedIn, imageUrl, route, box } = this.state;
     return (
       <div className="App">
