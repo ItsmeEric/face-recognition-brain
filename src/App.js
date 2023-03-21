@@ -4,6 +4,7 @@ import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import Logo from "./components/Logo/Logo";
 import Rank from "./components/Rank/Rank";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
+import SignIn from "./components/SignIn/SignIn";
 import "./App.css";
 import ParticlesBg from "particles-bg";
 
@@ -104,6 +105,7 @@ class App extends Component {
       <div className="App">
         <ParticlesBg type="cobweb" num={150} bg={true} />
         <Navigation />
+        <SignIn />
         <Logo />
         <Rank />
         {/* Give ImageLinkForm the input change event as props */}
