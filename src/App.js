@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import Navigation from "./components/Navigation/Navigation";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import Logo from "./components/Logo/Logo";
@@ -65,7 +65,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    console.log("click");
+    // console.log("click");
 
     // We'll be using the new way of the Clarifai API face detection model
     app.models.predict(
