@@ -109,7 +109,7 @@ class App extends Component {
     return (
       <div className="App">
         <ParticlesBg type="cobweb" num={150} bg={true} />
-        <Navigation />
+        <Navigation onRouteChange={this.onRouteChange} />
         {this.state.route === "signin" ? (
           <SignIn onRouteChange={this.onRouteChange} />
         ) : (
