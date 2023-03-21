@@ -5,6 +5,7 @@ import Logo from "./components/Logo/Logo";
 import Rank from "./components/Rank/Rank";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import SignIn from "./components/SignIn/SignIn";
+import Register from "./components/Register/Register";
 import "./App.css";
 import ParticlesBg from "particles-bg";
 
@@ -110,9 +111,7 @@ class App extends Component {
       <div className="App">
         <ParticlesBg type="cobweb" num={150} bg={true} />
         <Navigation onRouteChange={this.onRouteChange} />
-        {this.state.route === "signin" ? (
-          <SignIn onRouteChange={this.onRouteChange} />
-        ) : (
+        {this.state.route === "home" ? (
           <div>
             <Logo />
             <Rank />
@@ -122,6 +121,10 @@ class App extends Component {
             />
             <FaceRecognition box={this.state.box} />
           </div>
+        ) : this.state.route === "signin" ? ( // For the register p tag
+          <SignIn onRouteChange={this.onRouteChange} />
+        ) : (
+          <Register onRouteChange={this.onRouteChange} />
         )}
       </div>
     );
