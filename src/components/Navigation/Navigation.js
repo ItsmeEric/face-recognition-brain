@@ -20,13 +20,13 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
         {/*Using tachyons to style our Sign Out paragraph*/}
         <p
           // Function to make the Sign Out button take us to Sign In form
-          onClick={() => onRouteChange("home")}
+          onClick={() => onRouteChange("signin")}
           className="f3 link dim black underline pa3 pointer"
         >
           Sign In
         </p>
         <p
-          onClick={() => onRouteChange("home")}
+          onClick={() => onRouteChange("register")}
           className="f3 link dim black underline pa3 pointer"
         >
           Register
