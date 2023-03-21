@@ -37,7 +37,7 @@ class App extends Component {
       imageUrl: "",
       box: {},
       route: "signin",
-      isSignedIn: "false",
+      isSignedIn: false,
     };
   }
 
@@ -117,7 +117,10 @@ class App extends Component {
     return (
       <div className="App">
         <ParticlesBg type="cobweb" num={150} bg={true} />
-        <Navigation onRouteChange={this.onRouteChange} />
+        <Navigation
+          isSignedIn={this.state.isSignedIn}
+          onRouteChange={this.onRouteChange}
+        />
         {this.state.route === "home" ? (
           <div>
             <Logo />
