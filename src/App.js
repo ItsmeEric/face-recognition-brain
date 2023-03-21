@@ -106,15 +106,19 @@ class App extends Component {
       <div className="App">
         <ParticlesBg type="cobweb" num={150} bg={true} />
         <Navigation />
-        <SignIn />
-        <Logo />
-        <Rank />
-        {/* Give ImageLinkForm the input change event as props */}
-        <ImageLinkForm
-          onInputChange={this.onInputChange}
-          onButtonSubmit={this.onButtonSubmit}
-        />
-        <FaceRecognition box={this.state.box} />
+        {this.state.route === "signin" ? (
+          <SignIn />
+        ) : (
+          <div>
+            <Logo />
+            <Rank />
+            <ImageLinkForm
+              onInputChange={this.onInputChange}
+              onButtonSubmit={this.onButtonSubmit}
+            />
+            <FaceRecognition box={this.state.box} />
+          </div>
+        )}
       </div>
     );
   }
