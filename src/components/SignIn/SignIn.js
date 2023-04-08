@@ -1,6 +1,13 @@
 import React from "react";
 
 class SignIn extends React.Component {
+  onEmailChange = (event) => {
+    this.setState({ signInEmail: event.target.value });
+  };
+
+  onPasswordChange = (event) => {
+    this.setState({ signInPassword: event.target.value });
+  };
   render() {
     const { onRouteChange } = this.props;
     return (
