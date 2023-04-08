@@ -20,14 +20,21 @@ class SignIn extends React.Component {
 
   //Fetch the info and send it to the database/server
   onSubmitSignIn = () => {
-    fetch("https://localhost:3000/signin", {
+    fetch("http://localhost:3000/signin", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: this.state.signInEmail,
         password: this.state.signInPassword,
       }),
-    });
+      // Now adjust response for Sign In
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data === "success") {
+          this.state.onRouteChange("home");
+        }
+      });
   };
 
   render() {
