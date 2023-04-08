@@ -1,6 +1,15 @@
 import React from "react";
 
 class SignIn extends React.Component {
+  //Create State and accept props so that they can be passed
+  constructor(props) {
+    super(props);
+    this.state = {
+      signInEmail: "",
+      signInPassword: "",
+    };
+  }
+
   onEmailChange = (event) => {
     this.setState({ signInEmail: event.target.value });
   };
