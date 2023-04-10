@@ -7,14 +7,6 @@ class Register extends React.Component {
       email: "",
       password: "",
       name: "",
-      user: {
-        id: "",
-        name: "",
-        email: "",
-        password: "",
-        entries: 0,
-        joined: "",
-      },
     };
   }
 
