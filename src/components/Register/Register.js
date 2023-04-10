@@ -7,6 +7,14 @@ class Register extends React.Component {
       email: "",
       password: "",
       name: "",
+      user: {
+        id: "444",
+        name: "Andrei",
+        email: `andreiscott@example.com`,
+        password: "bananas",
+        entries: 0,
+        joined: new Date(),
+      },
     };
   }
 
@@ -31,11 +39,11 @@ class Register extends React.Component {
         password: this.state.password,
         name: this.state.name,
       }),
-      // Now adjust response for Sign In
+      // Now adjust response for Sign In based on the User
     })
       .then((response) => response.json())
-      .then((data) => {
-        if (data === "success") {
+      .then((user) => {
+        if (user) {
           this.state.onRouteChange("home");
         }
       });
