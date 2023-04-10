@@ -50,17 +50,18 @@ class App extends Component {
   }
   // Create function to update the state and load USER
   loadUser = (data) => {
-    this.setState(
+    this.setState({
       user: {
-        id: user,
-        name: "",
-        email: "",
-        password: "",
-        entries: 0,
-        joined: "",
-  });
-  }
-  
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        entries: data.entries,
+        joined: data.joined,
+      },
+    });
+  };
+
   //Function to calculate the position of the face in an image
   calculateFaceLocation = (data) => {
     const clarifaiFace =
