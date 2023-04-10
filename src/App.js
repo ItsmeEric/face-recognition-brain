@@ -48,6 +48,7 @@ class App extends Component {
       },
     };
   }
+
   // Create function to update the state and load USER
   loadUser = (data) => {
     this.setState({
@@ -88,7 +89,7 @@ class App extends Component {
     this.setState({ input: event.target.value });
   };
 
-  onButtonSubmit = () => {
+  onPictureSubmit = () => {
     this.setState({ imageUrl: this.state.input });
     // console.log("click");
 
@@ -153,7 +154,7 @@ class App extends Component {
             />
             <ImageLinkForm
               onInputChange={this.onInputChange}
-              onButtonSubmit={this.onButtonSubmit}
+              onPictureSubmit={this.onPictureSubmit}
             />
             <FaceRecognition box={box} imageUrl={imageUrl} />
           </div>
