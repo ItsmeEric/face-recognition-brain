@@ -9,6 +9,18 @@ import Register from "./components/Register/Register";
 import "./App.css";
 import ParticlesBg from "particles-bg";
 
+//Credentials for Clarifai Access
+const Clarifai = require("clarifai");
+
+const PAT = "065c7652ac0a42f4930321614d877ae6";
+const USER_ID = "itsmeeric";
+const APP_ID = "my-first-application";
+// Change these to whatever model and image URL you want to use
+const MODEL_ID = "face-detection";
+const MODEL_VERSION_ID = "6dc7e46bc9124c5c8824be4822abe105";
+const IMAGE_URL =
+  "https://churchanswers.com/wp-content/uploads/2022/03/Blog-Article-Picture-6.png";
+
 // This was the old way to add particles
 // const particlesOptions = {
 //   particles: {
@@ -22,11 +34,10 @@ import ParticlesBg from "particles-bg";
 //   },
 // };
 
-const Clarifai = require("clarifai");
-
-const app = new Clarifai.App({
-  apiKey: "065c7652ac0a42f4930321614d877ae6",
-});
+// We don't need this anymore, because it's outdated
+// const app = new Clarifai.App({
+//   apiKey: "065c7652ac0a42f4930321614d877ae6",
+// });
 
 class App extends Component {
   // Create a state to recognize the user input
