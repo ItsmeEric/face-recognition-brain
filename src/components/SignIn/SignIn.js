@@ -27,12 +27,12 @@ class SignIn extends React.Component {
         email: this.state.signInEmail,
         password: this.state.signInPassword,
       }),
-      // Now adjust response for Sign In
+      // Now adjust response for Sign In if the user exists
     })
       .then((response) => response.json())
-      .then((data) => {
-        if (data === "success") {
-          this.props.loadUser(data);
+      .then((user) => {
+        if (user) {
+          this.props.loadUser(user);
           this.state.onRouteChange("home");
         }
       });
