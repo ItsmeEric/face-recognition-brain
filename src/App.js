@@ -53,7 +53,7 @@ class App extends Component {
         id: "",
         name: "",
         email: "",
-        password: "",
+        // password: "", // We don't need the password
         entries: 0,
         joined: "",
       },
@@ -67,7 +67,7 @@ class App extends Component {
         id: data.id,
         name: data.name,
         email: data.email,
-        password: data.password,
+        // password: data.password, We don't need the password for this case too.
         entries: data.entries,
         joined: data.joined,
       },
