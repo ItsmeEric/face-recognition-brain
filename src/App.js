@@ -101,10 +101,65 @@ class App extends Component {
   };
 
   onPictureSubmit = () => {
-    this.setState({ imageUrl: this.state.input });
-    // console.log("click");
+    this.setState({ imageUrl: this.state.input, loading: true });
 
-    // We'll be using the new way of the Clarifai API face detection model
+    //Implementing the Right way to predict faces in images
+    const raw = JSON.stringify({
+      user_app_id: {
+        user_id: USER_ID,
+        app_id: APP_ID,
+      },
+      inputs: [
+        {
+          data: {
+            image: {
+              url: this.state.input,
+            },
+          },
+        },
+      ],
+    });
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: "Key " + PAT,
+      },
+      body: raw,
+    };
+
+    fetch(
+      "https://api.clarifai.com/v2/models/" + MODEL_ID + "/outputs",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        this.setState({ loading: false });
+        if (response.outputs[0].data) {
+          this.displayFaceBox(this.calculateFaceLocation(response));
+
+          fetch("https://localhost:3000/image", {
+            method: "put",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id: this.state.user.id,
+            }),
+          })
+            .then((response) => response.json())
+            .then((count) => {
+              this.setState(Object.assign(this.state.user, { entries: count }));
+            });
+        } else {
+          window.alert("Not a valid Image URL.");
+        }
+      })
+      .catch((error) => console.log("error", error));
+  };
+
+  /*
+    Decided to change this whole code to the Updated one
+    // We'll be using the new way of the Clarifai API face detection model (Found out that this one was OUTDATED too)
     app.models.predict(
       {
         id: "face-detection", //If you want general concepts about image: 'general-image-recognition'
@@ -135,7 +190,7 @@ class App extends Component {
       })
       .catch((err) => console.log(err));
   };
-
+*/
   // Check the state we're currently in , in our page
   onRouteChange = (route) => {
     if (route === "signout") {
