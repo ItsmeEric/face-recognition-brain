@@ -113,7 +113,7 @@ class App extends Component {
         {
           data: {
             image: {
-              url: this.state.input,
+              url: this.state.input, // This Image URL is from the input no need to use the declared one (IMAGE_URL)
             },
           },
         },
@@ -128,7 +128,7 @@ class App extends Component {
       },
       body: raw,
     };
-
+    // Removed the MODEL_VERSION_ID for this case. Felt no need for it (+ "/versions/" + MODEL_VERSION_ID +)
     fetch(
       "https://api.clarifai.com/v2/models/" + MODEL_ID + "/outputs",
       requestOptions
