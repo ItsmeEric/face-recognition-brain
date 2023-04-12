@@ -30,9 +30,9 @@ class SignIn extends React.Component {
       // Now adjust response for Sign In if the user exists
     })
       .then((response) => response.json())
-      .then((user) => {
-        if (user) {
-          this.props.loadUser(user);
+      .then((data) => {
+        if (data.id) {
+          this.props.loadUser(data);
           this.props.onRouteChange("home");
         }
       });
