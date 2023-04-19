@@ -53,7 +53,6 @@ class App extends Component {
         id: "",
         name: "",
         email: "",
-        // password: "", // We don't need the password
         entries: 0,
         joined: "",
       },
@@ -67,7 +66,6 @@ class App extends Component {
         id: data.id,
         name: data.name,
         email: data.email,
-        // password: data.password, We don't need the password for this case too.
         entries: data.entries,
         joined: data.joined,
       },
@@ -81,7 +79,6 @@ class App extends Component {
     const image = document.getElementById("inputImage");
     const width = Number(image.width);
     const height = Number(image.height);
-    // Return an object. The box which has the face measures
     return {
       leftCol: clarifaiFace.left_col * width,
       topRow: clarifaiFace.top_row * height,
@@ -90,12 +87,10 @@ class App extends Component {
     };
   };
 
-  //Method to display face boundaries box
   displayFaceBox = (box) => {
     this.setState({ box: box });
   };
 
-  // Create an event listener to activate when the input changes
   onInputChange = (event) => {
     this.setState({ input: event.target.value });
   };

@@ -27,13 +27,21 @@ class SignIn extends React.Component {
         email: this.state.signInEmail,
         password: this.state.signInPassword,
       }),
-      // Now adjust response for Sign In if the user exists
     })
       .then((response) => response.json())
       .then((user) => {
         if (user.id) {
           this.props.loadUser(user);
+          /*
+            // This is Optional
+          if (user === 'wrong credentials'){
+            this.props.onRouteChange('signin');
+            alert('This person does not exist or you entered the wrong password! Try again')
+          } else {
+            console.log(user);
+          */
           this.props.onRouteChange("home");
+          //  }
         }
       });
   };
