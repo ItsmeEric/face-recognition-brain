@@ -32,11 +32,10 @@ class Register extends React.Component {
         password: this.state.password,
         name: this.state.name,
       }),
-      // Now adjust response for Sign In based on the User
     })
       .then((response) => response.json())
       .then((user) => {
-        if (user) {
+        if (user.id) {
           this.props.loadUser(user);
           this.props.onRouteChange("home");
         }
