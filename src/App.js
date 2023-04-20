@@ -15,12 +15,13 @@ const Clarifai = require("clarifai");
 const PAT = "065c7652ac0a42f4930321614d877ae6";
 const USER_ID = "itsmeeric";
 const APP_ID = "my-first-application";
-// Change these to whatever model and image URL you want to use
+// Change these to whatever model and image URL you want to use and comment them out
+/*
 const MODEL_ID = "face-detection";
 const MODEL_VERSION_ID = "6dc7e46bc9124c5c8824be4822abe105";
 const IMAGE_URL =
   "https://churchanswers.com/wp-content/uploads/2022/03/Blog-Article-Picture-6.png";
-
+*/
 // This was the old way to add particles
 // const particlesOptions = {
 //   particles: {
@@ -39,24 +40,27 @@ const IMAGE_URL =
 //   apiKey: "065c7652ac0a42f4930321614d877ae6",
 // });
 
+// Create Initial State for the new users
+const InitialState = {
+  input: "",
+  imageUrl: "",
+  box: {},
+  route: "signin",
+  isSignedIn: false,
+  user: {
+    id: "",
+    name: "",
+    email: "",
+    entries: 0,
+    joined: "",
+  },
+};
+
 class App extends Component {
   // Create a state to recognize the user input
   constructor() {
     super();
-    this.state = {
-      input: "",
-      imageUrl: "",
-      box: {},
-      route: "signin",
-      isSignedIn: false,
-      user: {
-        id: "",
-        name: "",
-        email: "",
-        entries: 0,
-        joined: "",
-      },
-    };
+    this.state = InitialState;
   }
 
   // Create function to update the state and load USER
@@ -189,7 +193,7 @@ class App extends Component {
   // Check the state we're currently in , in our page
   onRouteChange = (route) => {
     if (route === "signout") {
-      this.setState({ isSignedIn: false });
+      this.setState(InitialState);
     } else if (route === "home") {
       this.setState({ isSignedIn: true });
     }
