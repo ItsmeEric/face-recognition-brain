@@ -15,10 +15,12 @@ const Clarifai = require("clarifai");
 const PAT = "065c7652ac0a42f4930321614d877ae6";
 const USER_ID = "itsmeeric";
 const APP_ID = "my-first-application";
-// Change these to whatever model and image URL you want to use and comment them out
-/*
 const MODEL_ID = "face-detection";
+
+// Change these to whatever model and image URL you want to use
 const MODEL_VERSION_ID = "6dc7e46bc9124c5c8824be4822abe105";
+
+/*
 const IMAGE_URL =
   "https://churchanswers.com/wp-content/uploads/2022/03/Blog-Article-Picture-6.png";
 */
@@ -129,7 +131,11 @@ class App extends Component {
     };
     // Removed the MODEL_VERSION_ID for this case. Felt no need for it (+ "/versions/" + MODEL_VERSION_ID +)
     fetch(
-      "https://api.clarifai.com/v2/models/" + MODEL_ID + "/outputs",
+      "https://api.clarifai.com/v2/models/" +
+        MODEL_ID +
+        "/versions/" +
+        MODEL_VERSION_ID +
+        "/outputs",
       requestOptions
     )
       .then((response) => response.json())
