@@ -9,9 +9,6 @@ import Register from "./components/Register/Register";
 import "./App.css";
 import ParticlesBg from "particles-bg";
 
-//Credentials for Clarifai Access
-const Clarifai = require("clarifai");
-
 const PAT = "065c7652ac0a42f4930321614d877ae6";
 const USER_ID = "itsmeeric";
 const APP_ID = "my-first-application";
