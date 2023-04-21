@@ -60,8 +60,8 @@ class App extends Component {
 
   //Function to calculate the position of the face in an image
   calculateFaceLocation = (data) => {
-    const clarifaiFace =
-      data.outputs[0].data.regions[0].region_info.bounding_box;
+    const clarifaiFace = JSON.parse(data, null, 2).outputs[0].data.regions[0]
+      .region_info.bounding_box;
     const image = document.getElementById("inputImage");
     const width = Number(image.width);
     const height = Number(image.height);
@@ -82,7 +82,7 @@ class App extends Component {
   };
 
   onPictureSubmit = () => {
-    this.setState({ imageUrl: this.state.input, loading: true });
+    this.setState({ imageUrl: this.state.input });
 
     //Implementing the Right way to predict faces in images
     const raw = JSON.stringify({
@@ -118,12 +118,9 @@ class App extends Component {
         "/outputs",
       requestOptions
     )
-      .then((response) => response.json())
+      .then((response) => response.text())
       .then((response) => {
-        this.setState({ loading: false });
-        if (response.outputs[0].data) {
-          this.displayFaceBox(this.calculateFaceLocation(response));
-
+        if (response) {
           fetch("https://localhost:3000/image", {
             method: "put",
             headers: { "Content-Type": "application/json" },
@@ -135,10 +132,9 @@ class App extends Component {
             .then((count) => {
               this.setState(Object.assign(this.state.user, { entries: count }));
             })
-            .catch(console.log);
-        } else {
-          window.alert("Not a valid Image URL.");
+            .catch(console.log("Something went wrong"));
         }
+        this.displayFaceBox(this.calculateFaceLocation(response));
       })
       .catch((error) => console.log("error", error));
   };
