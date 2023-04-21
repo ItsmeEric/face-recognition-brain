@@ -9,13 +9,8 @@ import Register from "./components/Register/Register";
 import "./App.css";
 import ParticlesBg from "particles-bg";
 
-const PAT = "065c7652ac0a42f4930321614d877ae6";
-const USER_ID = "itsmeeric";
-const APP_ID = "my-first-application";
-const MODEL_ID = "face-detection";
-
 // Change these to whatever model and image URL you want to use
-const MODEL_VERSION_ID = "6dc7e46bc9124c5c8824be4822abe105";
+// const MODEL_VERSION_ID = "6dc7e46bc9124c5c8824be4822abe105";
 
 // We don't need this anymore, because it's outdated
 // const app = new Clarifai.App({
@@ -60,8 +55,8 @@ class App extends Component {
 
   //Function to calculate the position of the face in an image
   calculateFaceLocation = (data) => {
-    const clarifaiFace = JSON.parse(data, null, 2).outputs[0].data.regions[0]
-      .region_info.bounding_box;
+    const clarifaiFace =
+      data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById("inputImage");
     const width = Number(image.width);
     const height = Number(image.height);
@@ -83,45 +78,17 @@ class App extends Component {
 
   onPictureSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-
-    //Implementing the Right way to predict faces in images
-    const raw = JSON.stringify({
-      user_app_id: {
-        user_id: USER_ID,
-        app_id: APP_ID,
-      },
-      inputs: [
-        {
-          data: {
-            image: {
-              url: this.state.input,
-            },
-          },
-        },
-      ],
-    });
-
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        Authorization: "Key " + PAT,
-      },
-      body: raw,
-    };
-    // Removed the MODEL_VERSION_ID for this case. Felt no need for it (+ "/versions/" + MODEL_VERSION_ID +)
-    fetch(
-      "https://api.clarifai.com/v2/models/" +
-        MODEL_ID +
-        "/versions/" +
-        MODEL_VERSION_ID +
-        "/outputs",
-      requestOptions
-    )
-      .then((response) => response.text())
+    fetch("http://localhost:3000/imageurl", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        input: this.state.input,
+      }),
+    })
+      .then((response) => response.json())
       .then((response) => {
         if (response) {
-          fetch("https://localhost:3000/image", {
+          fetch("http://localhost:3000/image", {
             method: "put",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
