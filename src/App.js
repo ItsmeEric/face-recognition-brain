@@ -17,23 +17,6 @@ const MODEL_ID = "face-detection";
 // Change these to whatever model and image URL you want to use
 const MODEL_VERSION_ID = "6dc7e46bc9124c5c8824be4822abe105";
 
-/*
-const IMAGE_URL =
-  "https://churchanswers.com/wp-content/uploads/2022/03/Blog-Article-Picture-6.png";
-*/
-// This was the old way to add particles
-// const particlesOptions = {
-//   particles: {
-//     number: {
-//       value: 30,
-//       density: {
-//         enable: true,
-//         value_area: 800,
-//       },
-//     },
-//   },
-// };
-
 // We don't need this anymore, because it's outdated
 // const app = new Clarifai.App({
 //   apiKey: "065c7652ac0a42f4930321614d877ae6",
@@ -111,7 +94,7 @@ class App extends Component {
         {
           data: {
             image: {
-              url: this.state.input, // This Image URL is from the input no need to use the declared one (IMAGE_URL)
+              url: this.state.input,
             },
           },
         },
@@ -160,40 +143,6 @@ class App extends Component {
       .catch((error) => console.log("error", error));
   };
 
-  /*
-    Decided to change this whole code to the Updated one
-    // We'll be using the new way of the Clarifai API face detection model (Found out that this one was OUTDATED too)
-    app.models.predict(
-      {
-        id: "face-detection", //If you want general concepts about image: 'general-image-recognition'
-        name: "face-detection", //If you want general concepts about image: 'general-image-recognition'
-        version: "065c7652ac0a42f4930321614d877ae6", //If you want general concepts about image: 'aa7f35c01e0642fda5cf400f543e7c40'
-        type: "visual-detector",
-      },
-      this.state.input
-    );
-    app.models
-      .predict("face-detection", this.state.input)
-      .then((response) => {
-        console.log("hi", response);
-        if (response) {
-          fetch("http://localhost:3000/image", {
-            method: "put",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              id: this.state.user.id,
-            }),
-          })
-            .then((response) => response.json())
-            .then((count) => {
-              this.setState(Object.assign(this.state.user, { entries: count }));
-            });
-        }
-        this.displayFaceBox(this.calculateFaceLocation(response));
-      })
-      .catch((err) => console.log(err));
-  };
-*/
   // Check the state we're currently in , in our page
   onRouteChange = (route) => {
     if (route === "signout") {
