@@ -9,15 +9,7 @@ import Register from "./components/Register/Register";
 import "./App.css";
 import ParticlesBg from "particles-bg";
 
-// Change these to whatever model and image URL you want to use
-// const MODEL_VERSION_ID = "6dc7e46bc9124c5c8824be4822abe105";
-
-// We don't need this anymore, because it's outdated
-// const app = new Clarifai.App({
-//   apiKey: "065c7652ac0a42f4930321614d877ae6",
-// });
-
-// Create Initial State for the new users
+// Create Initial State for new users
 const InitialState = {
   input: "",
   imageUrl: "",
@@ -53,12 +45,7 @@ class App extends Component {
     });
   };
 
-  //Function to calculate the position of the face in an image
   calculateFaceLocation = (data) => {
-    // No more need for this because now we're returning multiple faces
-    // const clarifaiFace =
-    //   data.outputs[0].data.regions[0].region_info.bounding_box;
-
     const image = document.getElementById("inputImage");
     const width = Number(image.width);
     const height = Number(image.height);
@@ -122,7 +109,6 @@ class App extends Component {
   };
 
   render() {
-    // Destructuring the components props
     const { isSignedIn, imageUrl, route, box } = this.state;
     return (
       <div className="App">
@@ -142,13 +128,12 @@ class App extends Component {
               onInputChange={this.onInputChange}
               onPictureSubmit={this.onPictureSubmit}
             />
-            {/* Check if box is an array before passing it to the component */}
             <FaceRecognition
               box={Array.isArray(box) ? box : []}
               imageUrl={imageUrl}
             />
           </div>
-        ) : route === "signin" ? ( // For the register p tag
+        ) : route === "signin" ? (
           <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
         ) : (
           <Register
